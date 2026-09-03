@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nexo — o hub que reúne mais de 100 inteligências artificiais do mundo em um só lugar. Grátis e pagas, organizadas por categoria. Instale o app no Android, iOS, Windows, macOS e Linux.">
+<meta name="theme-color" content="#05070e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nexo">
+<title>Nexo — Todas as IAs do mundo em um só lugar</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2305070e'/><text x='50' y='72' font-size='62' text-anchor='middle' font-family='Arial' font-weight='bold' fill='%2338bdf8'>N</text></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/space-grotesk@latest/latin-500-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/space-grotesk@latest/latin-700-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-500-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-800-normal.css">
+<style>
+:root{
+  --bg:#05070e; --bg2:#080c16; --panel:#0c1120; --panel2:#101627;
+  --branco:#f5f8ff; --cinza:#bdc7e0;
+  --azul:#3b82f6; --azul2:#38bdf8; --verde:#22c55e; --verde2:#34d399;
+  --roxo:#8b5cf6; --roxo2:#c084fc;
+  --borda:rgba(140,160,255,.16); --raio:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--branco);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+h1,h2,h3,.display{font-family:'Space Grotesk','Inter',sans-serif}
+::selection{background:var(--roxo);color:#fff}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#070a12}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--azul),var(--roxo));border-radius:8px}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:linear-gradient(rgba(120,140,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(120,140,255,.045) 1px,transparent 1px);
+  background-size:56px 56px}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.wrap{width:min(1200px,92%);margin:0 auto;position:relative;z-index:2}
+.grad{background:linear-gradient(90deg,var(--azul2),var(--verde2),var(--roxo2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ===== NAV ===== */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:.3s}
+#nav.rolou{background:rgba(5,7,14,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--borda);padding:10px 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--azul),var(--verde) 55%,var(--roxo));display:grid;place-items:center;font-family:'Space Grotesk';font-weight:700;font-size:1.35rem;color:#fff;box-shadow:0 0 22px rgba(59,130,246,.45)}
+.logo-txt{font-family:'Space Grotesk';font-weight:700;font-size:1.4rem;letter-spacing:.06em;color:var(--branco)}
+.logo-txt small{display:block;font-size:.58rem;font-weight:600;letter-spacing:.32em;color:var(--azul2);text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:20px;list-style:none}
+.nav-links>li>a{text-decoration:none;color:var(--branco);font-weight:600;font-size:.92rem;transition:.2s}
+.nav-links>li>a:hover{color:var(--azul2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 24px;border-radius:12px;border:0;font-weight:700;font-size:.95rem;text-decoration:none;transition:.25s;font-family:'Inter'}
+.btn-prim{background:linear-gradient(90deg,#1d4ed8,#7c3aed);color:#fff;box-shadow:0 10px 30px rgba(88,64,230,.35)}
+.btn-prim:hover{filter:brightness(1.18);transform:translateY(-2px)}
+.btn-sec{background:transparent;color:var(--branco);border:1.5px solid var(--borda)}
+.btn-sec:hover{border-color:var(--verde);color:var(--verde2);transform:translateY(-2px)}
+.btn-sm{padding:10px 18px;font-size:.88rem;border-radius:11px}
+#hamb{display:none;background:none;border:1.5px solid var(--borda);border-radius:10px;width:44px;height:44px;position:relative}
+#hamb span,#hamb span::before,#hamb span::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:20px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+#hamb span{top:50%;margin-top:-1px}
+#hamb span::before{top:-6px;left:0;transform:none}
+#hamb span::after{top:6px;left:0;transform:none}
+#hamb.aberto span{background:transparent}
+#hamb.aberto span::before{top:0;transform:rotate(45deg)}
+#hamb.aberto span::after{top:0;transform:rotate(-45deg)}
+
+/* ===== HERO ===== */
+#inicio{position:relative;min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;overflow:hidden}
+#netCanvas{position:absolute;inset:0;width:100%;height:100%}
+.orbe{position:absolute;border-radius:50%;filter:blur(95px);opacity:.4;animation:flutua 13s ease-in-out infinite alternate}
+.orbe.o1{width:420px;height:420px;background:#1d4ed8;top:-120px;left:-140px}
+.orbe.o2{width:360px;height:360px;background:#059669;bottom:-120px;right:8%;animation-delay:-4s}
+.orbe.o3{width:300px;height:300px;background:#7c3aed;top:22%;right:-120px;animation-delay:-8s}
+@keyframes flutua{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,50px) scale(1.15)}}
+.hero-in{position:relative;z-index:3;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;border:1px solid var(--borda);background:rgba(11,16,29,.7);color:var(--branco);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.hero-badge i{width:8px;height:8px;border-radius:50%;background:var(--verde);box-shadow:0 0 12px var(--verde);animation:pulsa 1.6s infinite}
+@keyframes pulsa{50%{opacity:.35}}
+.hero-in h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.08;font-weight:700;margin:26px auto 20px;max-width:900px;color:var(--branco)}
+.hero-in p{max-width:720px;margin:0 auto 34px;color:var(--cinza);font-size:clamp(1rem,1.6vw,1.15rem)}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-conf{margin-top:26px;color:var(--cinza);font-size:.86rem;font-weight:600;letter-spacing:.04em}
+.hero-conf b{color:var(--verde2)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:860px;margin:56px auto 0}
+.stat{background:rgba(11,16,29,.75);border:1px solid var(--borda);border-radius:14px;padding:20px 12px;text-align:center;transition:.3s}
+.stat:hover{border-color:var(--azul);transform:translateY(-4px)}
+.stat strong{display:block;font-family:'Space Grotesk';font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:var(--branco)}
+.stat span{color:var(--cinza);font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+
+/* ===== MARQUEE ===== */
+.marquee{overflow:hidden;border-block:1px solid var(--borda);background:var(--bg2);padding:15px 0;position:relative;z-index:2}
+.marquee-track{display:flex;width:max-content;animation:marq 60s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.mq-item{margin-right:38px;font-family:'Space Grotesk';font-weight:500;color:var(--cinza);white-space:nowrap;font-size:.95rem}
+.mq-item b{color:var(--azul2);margin-right:10px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ===== SEÇÕES ===== */
+section{padding:100px 0;position:relative;z-index:2}
+.sec-tag{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--verde2);border:1px solid rgba(52,211,153,.4);background:rgba(34,197,94,.08);padding:7px 14px;border-radius:6px;margin-bottom:16px}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.8rem);font-weight:700;color:var(--branco);margin-bottom:12px}
+.sec-head p{color:var(--cinza);max-width:640px}
+.sec-head{margin-bottom:44px}
+
+/* ===== CATÁLOGO ===== */
+.filtros{display:flex;flex-direction:column;gap:16px;margin-bottom:14px}
+.filtros-topo{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.busca-box{flex:1;min-width:260px;position:relative}
+.busca-box svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--cinza)}
+#busca{width:100%;padding:15px 18px 15px 48px;border-radius:13px;border:1.5px solid var(--borda);background:var(--panel);color:var(--branco);font-size:1rem;font-family:inherit;outline:none;transition:.25s}
+#busca:focus{border-color:var(--azul);box-shadow:0 0 0 4px rgba(59,130,246,.18)}
+#busca::placeholder{color:#8fa0c4}
+.seg{display:flex;background:var(--panel);border:1.5px solid var(--borda);border-radius:13px;padding:5px;gap:5px}
+.seg button{padding:10px 22px;border-radius:9px;border:0;background:transparent;color:var(--cinza);font-weight:700;font-size:.92rem;transition:.2s}
+.seg button.ativo{background:linear-gradient(90deg,#1d4ed8,#7c3aed);color:#fff;box-shadow:0 4px 16px rgba(88,64,230,.4)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{padding:9px 17px;border-radius:999px;border:1px solid var(--borda);background:var(--panel);color:var(--cinza);font-weight:600;font-size:.88rem;transition:.2s}
+.chip:hover{color:#fff;border-color:var(--azul)}
+.chip.ativo{border-color:var(--verde);color:#fff;background:rgba(34,197,94,.14);box-shadow:0 0 0 1px rgba(34,197,94,.4)}
+#contador{color:var(--cinza);font-weight:600;font-size:.9rem;margin:6px 0 20px}
+#contador b{color:var(--azul2)}
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.ai-card{background:linear-gradient(180deg,#0d1322,#0a0e1a);border:1px solid var(--borda);border-radius:var(--raio);padding:22px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.ai-card::after{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.22),transparent 70%);opacity:0;transition:.4s}
+.ai-card:hover{transform:translateY(-6px);border-color:rgba(99,102,241,.5);box-shadow:0 18px 44px rgba(3,6,18,.7)}
+.ai-card:hover::after{opacity:1}
+.ai-topo{display:flex;align-items:center;gap:12px}
+.ai-avatar{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;font-family:'Space Grotesk';font-weight:700;font-size:1.15rem;color:#fff;flex-shrink:0}
+.g1{background:linear-gradient(135deg,#2563eb,#7c3aed)}
+.g2{background:linear-gradient(135deg,#059669,#0ea5e9)}
+.g3{background:linear-gradient(135deg,#8b5cf6,#3b82f6)}
+.g4{background:linear-gradient(135deg,#10b981,#8b5cf6)}
+.g5{background:linear-gradient(135deg,#0284c7,#22d3ee)}
+.g6{background:linear-gradient(135deg,#22c55e,#2563eb)}
+.ai-info{flex:1;min-width:0}
+.ai-info h3{font-size:1.08rem;font-weight:700;color:var(--branco);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hot{font-size:.6rem;font-weight:800;letter-spacing:.12em;color:#04150b;background:linear-gradient(90deg,var(--verde2),var(--azul2));padding:3px 8px;border-radius:5px}
+.ai-dev{font-size:.8rem;color:var(--cinza);font-weight:600}
+.preco{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border-radius:7px;border:1px solid;white-space:nowrap}
+.pb-verde{color:#4ade80;border-color:rgba(34,197,94,.55);background:rgba(34,197,94,.12)}
+.pb-azul{color:#7cc0ff;border-color:rgba(59,130,246,.55);background:rgba(59,130,246,.12)}
+.pb-roxo{color:#d0a2ff;border-color:rgba(168,85,247,.55);background:rgba(168,85,247,.14)}
+.ai-desc{color:var(--cinza);font-size:.92rem;flex:1}
+.ai-rodape{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tipo-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);border:1px solid var(--borda);padding:6px 11px;border-radius:7px}
+.abrir{display:inline-flex;align-items:center;gap:8px;padding:10px 17px;border-radius:11px;background:linear-gradient(90deg,#1d4ed8,#7c3aed);color:#fff;font-weight:700;font-size:.88rem;text-decoration:none;transition:.25s}
+.abrir:hover{filter:brightness(1.2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.4)}
+#vazio{display:none;text-align:center;padding:70px 20px;border:1.5px dashed var(--borda);border-radius:var(--raio);color:var(--cinza)}
+#vazio strong{display:block;font-size:1.3rem;color:var(--branco);margin-bottom:8px}
+
+/* ===== COMO FUNCIONA ===== */
+#como{background:var(--bg2);border-block:1px solid var(--borda)}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.passo{background:var(--panel);border:1px solid var(--borda);border-radius:var(--raio);padding:32px 26px;position:relative;overflow:hidden;transition:.3s}
+.passo:hover{transform:translateY(-6px);border-color:var(--verde)}
+.passo-num{position:absolute;top:14px;right:20px;font-family:'Space Grotesk';font-size:3.4rem;font-weight:700;color:rgba(140,160,255,.1);line-height:1}
+.passo-ico{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;color:#fff}
+.passo:nth-child(1) .passo-ico{background:linear-gradient(135deg,#2563eb,#38bdf8)}
+.passo:nth-child(2) .passo-ico{background:linear-gradient(135deg,#059669,#34d399)}
+.passo:nth-child(3) .passo-ico{background:linear-gradient(135deg,#7c3aed,#c084fc)}
+.passo h3{font-size:1.25rem;margin-bottom:10px;color:var(--branco)}
+.passo p{color:var(--cinza);font-size:.95rem}
+
+/* ===== APP ===== */
+.app-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+.app-visual{position:relative;display:flex;justify-content:center}
+.app-visual::before{content:"";position:absolute;inset:10% 5%;background:radial-gradient(circle,rgba(59,130,246,.28),rgba(139,92,246,.18) 45%,transparent 75%);filter:blur(30px);animation:pulsa 4s infinite}
+.app-img{width:min(380px,80%);border-radius:26px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.65),0 0 60px rgba(59,130,246,.25);animation:flutua-app 6s ease-in-out infinite alternate}
+@keyframes flutua-app{from{transform:translateY(-8px)}to{transform:translateY(14px)}}
+.app-versao{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#1d4ed8,#7c3aed);color:#fff;font-weight:800;font-size:.78rem;letter-spacing:.1em;padding:9px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(88,64,230,.5);white-space:nowrap}
+.plats{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.plat-btn{display:flex;align-items:center;gap:16px;padding:15px 20px;border-radius:14px;border:1.5px solid var(--borda);background:var(--panel);color:var(--branco);text-align:left;transition:.25s}
+.plat-btn:hover{border-color:var(--azul);background:var(--panel2);transform:translateX(6px)}
+.plat-btn svg{flex-shrink:0;color:var(--azul2)}
+.plat-btn .pb-info{flex:1}
+.plat-btn .pb-info strong{display:block;font-size:1rem}
+.plat-btn .pb-info small{color:var(--cinza);font-size:.78rem;font-weight:600}
+.plat-btn .pb-dl{font-size:.78rem;font-weight:800;letter-spacing:.08em;color:var(--verde2);text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.app-nota{margin-top:18px;color:var(--cinza);font-size:.85rem;font-weight:600}
+.app-nota b{color:var(--verde2)}
+.app-offline{margin-top:14px}
+
+/* ===== FAQ ===== */
+#faq{background:var(--bg2);border-block:1px solid var(--borda)}
+.faq-lista{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid var(--borda);border-radius:14px;background:var(--panel);overflow:hidden;transition:.3s}
+.faq-item.aberto{border-color:var(--roxo)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;background:none;border:0;color:var(--branco);font-size:1.02rem;font-weight:700;text-align:left;font-family:'Inter'}
+.faq-q svg{transition:.3s;color:var(--azul2);flex-shrink:0}
+.faq-item.aberto .faq-q svg{transform:rotate(45deg);color:var(--roxo2)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a p{padding:0 24px 22px;color:var(--cinza)}
+
+/* ===== NEWSLETTER ===== */
+.news-box{background:linear-gradient(135deg,rgba(29,78,216,.22),rgba(5,150,105,.18) 50%,rgba(124,58,237,.22));border:1px solid var(--borda);border-radius:26px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+.news-box::before{content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.07),transparent);animation:brilho 5s linear infinite}
+@keyframes brilho{to{left:140%}}
+.news-box h2{font-size:clamp(1.6rem,3vw,2.3rem);margin-bottom:10px;color:var(--branco)}
+.news-box p{color:var(--cinza);max-width:520px;margin:0 auto 28px}
+#formNews{display:flex;gap:12px;max-width:520px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+#emailNews{flex:1;min-width:240px;padding:15px 20px;border-radius:12px;border:1.5px solid var(--borda);background:rgba(5,7,14,.7);color:var(--branco);font-size:1rem;font-family:inherit;outline:none;transition:.25s}
+#emailNews:focus{border-color:var(--verde)}
+#emailNews::placeholder{color:#8fa0c4}
+
+/* ===== MODAL GUIA DE INSTALAÇÃO ===== */
+.overlay{position:fixed;inset:0;z-index:300;background:rgba(3,5,10,.82);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:.3s}
+.overlay.aberto{opacity:1;pointer-events:auto}
+.modal{width:100%;max-width:460px;background:linear-gradient(180deg,#0e1425,#0a0e1a);border:1px solid var(--borda);border-radius:22px;padding:36px 30px 28px;position:relative;transform:translateY(24px) scale(.96);transition:.35s;box-shadow:0 40px 90px rgba(0,0,0,.7);max-height:92vh;overflow-y:auto}
+.modal::before{content:"";position:absolute;top:0;left:10%;right:10%;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--azul),var(--verde),var(--roxo))}
+.overlay.aberto .modal{transform:none}
+.modal-x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:10px;border:1px solid var(--borda);background:var(--panel);color:var(--branco);display:grid;place-items:center;transition:.2s}
+.modal-x:hover{border-color:var(--roxo);color:var(--roxo2)}
+.modal h3{text-align:center;font-size:1.35rem;color:var(--branco);margin-bottom:8px}
+.modal-sub{text-align:center;color:var(--cinza);font-size:.9rem;margin-bottom:22px}
+.guia-passos{list-style:none;counter-reset:gp;display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.guia-passos li{counter-increment:gp;display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--borda);border-radius:12px;padding:13px 16px;color:var(--branco);font-size:.93rem;font-weight:500}
+.guia-passos li::before{content:counter(gp);flex-shrink:0;width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,var(--azul),var(--roxo));display:grid;place-items:center;font-weight:800;font-size:.85rem;color:#fff}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--borda);background:#04060b;padding:70px 0 30px;position:relative;z-index:2}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.foot-grid p{color:var(--cinza);font-size:.92rem;margin:16px 0 22px;max-width:300px}
+.foot-col h4{font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--branco);margin-bottom:18px}
+.foot-col a,.foot-col button{display:block;background:none;border:0;color:var(--cinza);text-decoration:none;font-size:.93rem;font-weight:500;margin-bottom:11px;padding:0;transition:.2s;text-align:left}
+.foot-col a:hover,.foot-col button:hover{color:var(--azul2);transform:translateX(4px)}
+.sociais{display:flex;gap:11px}
+.sociais a{width:42px;height:42px;border-radius:11px;border:1px solid var(--borda);display:grid;place-items:center;color:var(--cinza);transition:.25s}
+.sociais a:hover{color:#fff;border-color:var(--roxo);background:rgba(139,92,246,.15);transform:translateY(-4px)}
+.foot-fim{border-top:1px solid var(--borda);padding-top:26px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--cinza);font-size:.85rem;font-weight:600}
+.foot-fim b{color:var(--verde2)}
+
+/* ===== EXTRAS ===== */
+#btnTopo{position:fixed;right:26px;bottom:26px;z-index:120;width:52px;height:52px;border-radius:14px;border:0;background:linear-gradient(135deg,var(--azul),var(--roxo));color:#fff;display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(16px);transition:.3s;box-shadow:0 12px 30px rgba(88,64,230,.45)}
+#btnTopo.visivel{opacity:1;pointer-events:auto;transform:none}
+#toasts{position:fixed;right:26px;bottom:96px;z-index:400;display:flex;flex-direction:column;gap:10px;align-items:flex-end;pointer-events:none}
+.toast{pointer-events:auto;display:flex;align-items:center;gap:11px;background:#0d1322;border:1px solid var(--borda);border-left:4px solid var(--verde);border-radius:12px;padding:14px 20px;color:var(--branco);font-weight:600;font-size:.92rem;box-shadow:0 16px 40px rgba(0,0,0,.6);animation:toastIn .35s cubic-bezier(.2,.9,.3,1.2);max-width:340px}
+.toast.saindo{animation:toastOut .3s forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(40px)}}
+@keyframes toastOut{to{opacity:0;transform:translateX(40px)}}
+.reveal{opacity:0;transform:translateY(26px)}
+.reveal.visible{animation:aparecer .65s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes aparecer{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:960px){
+  .nav-links{position:fixed;top:0;right:-100%;width:min(340px,85%);height:100vh;background:#080c16;flex-direction:column;justify-content:center;padding:40px;gap:24px;transition:.4s;border-left:1px solid var(--borda);z-index:-1}
+  .nav-links.aberto{right:0}
+  .nav-links>li>a{font-size:1.1rem}
+  #hamb{display:block;z-index:101}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .passos{grid-template-columns:1fr}
+  .app-grid{grid-template-columns:1fr;gap:50px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .foot-grid{grid-template-columns:1fr}
+  .ai-rodape{flex-direction:column;align-items:stretch}
+  .abrir{justify-content:center}
+  .tipo-tag{text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#inicio" aria-label="Nexo — início">
+      <span class="logo-mark">N</span>
+      <span class="logo-txt">NEXO<small>HUB DE IAs</small></span>
+    </a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="#app">Baixar App</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="btn btn-prim btn-sm" href="#app">Instalar App</a></li>
+    </ul>
+    <button id="hamb" aria-label="Abrir menu"><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="inicio">
+  <canvas id="netCanvas" aria-hidden="true"></canvas>
+  <div class="orbe o1"></div><div class="orbe o2"></div><div class="orbe o3"></div>
+  <div class="wrap hero-in">
+    <span class="hero-badge"><i></i> Hub atualizado · acesso livre</span>
+    <h1>Todas as <span class="grad">IAs do mundo</span><br>em um só lugar.</h1>
+    <p>O Nexo reúne mais de 100 inteligências artificiais — grátis e pagas — organizadas por categoria, com descrição completa e acesso direto ao site oficial. Chatbots, imagens, vídeos, áudio, código, pesquisa e produtividade. Sem cadastro, sem barreiras.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-prim" href="#catalogo">Explorar catálogo
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-sec" href="#app">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4.5-4.5M12 15 7.5 10.5M4 20h16"/></svg>
+        Baixar o app
+      </a>
+    </div>
+    <p class="hero-conf"><b>✓</b> Acesso livre &nbsp;·&nbsp; <b>✓</b> Links 100% oficiais &nbsp;·&nbsp; <b>✓</b> App instalável</p>
+    <div class="stats reveal">
+      <div class="stat"><strong data-alvo="100" data-sufixo="+">0</strong><span>IAs reunidas</span></div>
+      <div class="stat"><strong data-alvo="7" data-sufixo="">0</strong><span>Categorias</span></div>
+      <div class="stat"><strong data-alvo="100" data-sufixo="%">0</strong><span>Links oficiais</span></div>
+      <div class="stat"><strong data-alvo="5" data-sufixo="">0</strong><span>Plataformas de app</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marqueeTrack"></div></div>
+
+<!-- CATÁLOGO -->
+<section id="catalogo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">01 · Catálogo</span>
+      <h2>Explore <span class="grad">mais de 100 IAs</span></h2>
+      <p>Filtre por tipo e preço, pesquise pelo nome e clique em “Abrir” para ir direto ao site oficial da inteligência artificial.</p>
+    </div>
+    <div class="filtros reveal">
+      <div class="filtros-topo">
+        <div class="busca-box">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="busca" type="text" placeholder="Pesquisar IA por nome, empresa ou função…" autocomplete="off">
+        </div>
+        <div class="seg" id="segPreco" role="tablist" aria-label="Filtrar por preço">
+          <button data-preco="tudo" class="ativo">Tudo</button>
+          <button data-preco="gratis">Grátis</button>
+          <button data-preco="pago">Pago</button>
+        </div>
+      </div>
+      <div class="chips" id="chipsTipo"></div>
+    </div>
+    <p id="contador"></p>
+    <div class="ai-grid" id="grade"></div>
+    <div id="vazio">
+      <strong>Nenhuma IA encontrada 😕</strong>
+      Tente outro termo ou limpe os filtros para ver o catálogo completo.
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">02 · Como funciona</span>
+      <h2>Simples, direto e <span class="grad">sem enrolação</span></h2>
+      <p>O Nexo é a ponte entre você e a inteligência artificial certa para cada tarefa.</p>
+    </div>
+    <div class="passos">
+      <div class="passo reveal">
+        <span class="passo-num">01</span>
+        <div class="passo-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <h3>Encontre</h3>
+        <p>Use a busca e os filtros de categoria (chat, imagem, vídeo, áudio, código, pesquisa e produtividade) e de preço (grátis ou pago) para achar a IA ideal.</p>
+      </div>
+      <div class="passo reveal">
+        <span class="passo-num">02</span>
+        <div class="passo-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="m2 13 10 5 10-5"/></svg></div>
+        <h3>Compare</h3>
+        <p>Leia a descrição de cada ferramenta, veja a empresa criadora, a categoria e o modelo de preço antes de decidir. Sem surpresa, sem letra miúda.</p>
+      </div>
+      <div class="passo reveal">
+        <span class="passo-num">03</span>
+        <div class="passo-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+        <h3>Conecte-se</h3>
+        <p>Clique em “Abrir” e seja levado diretamente ao site oficial da IA. Sem intermediários, sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section id="app">
+  <div class="wrap app-grid">
+    <div class="app-visual reveal">
+      <img class="app-img" src="https://image.qwenlm.ai/public_source/145bbd0a-4bd0-4a2f-a015-44484e399a3e/1e416e8bb-e9cb-49e4-bd24-d13c0d6f8756.png" alt="Aplicativo Nexo em um smartphone com interface escura, cartões neon azul, verde e roxo e botão de instalação">
+      <span class="app-versao">NEXO APP · v3.0.0</span>
+    </div>
+    <div class="reveal">
+      <span class="sec-tag">03 · Aplicativo</span>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:12px">Instale o Nexo como <span class="grad">app de verdade</span></h2>
+      <p style="color:var(--cinza)">O Nexo é um PWA: instala de verdade no seu dispositivo, vira ícone na tela inicial, abre em janela própria e funciona como aplicativo — sem loja, sem APK de terceiros, 100% oficial e gratuito.</p>
+      <div class="plats">
+        <button class="plat-btn" data-plat="android" type="button">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 13a7 7 0 0 1 14 0v6H5z"/><circle cx="9.5" cy="13" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.1" fill="currentColor" stroke="none"/><path d="m7 6.2-1.6-2.4M17 6.2l1.6-2.4"/></svg>
+          <span class="pb-info"><strong>Android</strong><small>Instalação nativa em 1 toque + ícone na tela inicial</small></span>
+          <span class="pb-dl">Instalar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0 4.5-4.5M12 16 7.5 11.5M4 20h16"/></svg></span>
+        </button>
+        <button class="plat-btn" data-plat="ios" type="button">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M15.7 3.2c.1 1-.3 2-1 2.8-.7.8-1.9 1.4-2.9 1.3-.1-1 .4-2 1-2.8.7-.8 2-1.3 2.9-1.3zM19.4 17.2c-.5 1.1-.8 1.6-1.4 2.6-.9 1.3-2.1 2.9-3.6 2.9-1.4 0-1.7-.9-3.6-.9s-2.3.9-3.7.9c-1.5 0-2.7-1.5-3.6-2.8-2.4-3.6-2.7-7.8-1.2-10.1 1-1.6 2.7-2.6 4.3-2.6 1.6 0 2.7 1 4.1 1 1.4 0 2.2-1 4.1-1 1.4 0 2.9.8 4 2.1-3.5 1.9-3 7 .6 7.9z"/></svg>
+          <span class="pb-info"><strong>iOS (iPhone / iPad)</strong><small>Adicionar à Tela de Início pelo Safari</small></span>
+          <span class="pb-dl">Instalar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0 4.5-4.5M12 16 7.5 11.5M4 20h16"/></svg></span>
+        </button>
+        <button class="plat-btn" data-plat="windows" type="button">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.4 10.6 4.3v7.2H3zM11.6 4.2 21 3v8.5h-9.4zM3 12.5h7.6v7.2L3 18.6zM11.6 12.5H21V21l-9.4-1.3z"/></svg>
+          <span class="pb-info"><strong>Windows</strong><small>App de desktop via Chrome ou Edge · Menu Iniciar</small></span>
+          <span class="pb-dl">Instalar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0 4.5-4.5M12 16 7.5 11.5M4 20h16"/></svg></span>
+        </button>
+        <button class="plat-btn" data-plat="macos" type="button">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="11" rx="1.6"/><path d="M2 19.5h20"/></svg>
+          <span class="pb-info"><strong>macOS</strong><small>App no Launchpad via Chrome ou Edge</small></span>
+          <span class="pb-dl">Instalar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0 4.5-4.5M12 16 7.5 11.5M4 20h16"/></svg></span>
+        </button>
+        <button class="plat-btn" data-plat="linux" type="button">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="m7 9.5 3 3-3 3M12.5 15.5H17"/></svg>
+          <span class="pb-info"><strong>Linux</strong><small>App no menu de aplicativos via Chrome/Chromium/Edge</small></span>
+          <span class="pb-dl">Instalar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0 4.5-4.5M12 16 7.5 11.5M4 20h16"/></svg></span>
+        </button>
+      </div>
+      <button class="btn btn-sec btn-sm app-offline" id="btnOffline" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4.5-4.5M12 15 7.5 10.5M4 20h16"/></svg>
+        Baixar pacote offline (.html)
+      </button>
+      <p class="app-nota"><b>✓</b> Gratuito para sempre &nbsp;·&nbsp; <b>✓</b> Sem anúncios &nbsp;·&nbsp; <b>✓</b> Leve e seguro</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-inline:auto">
+      <span class="sec-tag">04 · Dúvidas frequentes</span>
+      <h2>Perguntas <span class="grad">frequentes</span></h2>
+    </div>
+    <div class="faq-lista reveal">
+      <div class="faq-item">
+        <button class="faq-q" type="button">O Nexo é realmente gratuito e sem cadastro? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><p>Sim! O acesso é 100% livre: você entra no site, explora o catálogo com mais de 100 IAs, filtra, pesquisa e abre qualquer ferramenta — sem criar conta, sem e-mail, sem senha. Algumas das IAs listadas possuem planos pagos, mas isso é definido por cada empresa.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Como instalar o app do Nexo de verdade? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><p>Na seção “Baixar App”, toque em “Instalar” na sua plataforma. Em Android, Windows, macOS e Linux, o navegador abre a instalação oficial do app (PWA) em 1 clique. No iPhone/iPad, mostramos o passo a passo do Safari. Você também pode baixar o pacote offline (.html) que funciona em qualquer dispositivo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Os links levam aos sites oficiais? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><p>Sim, todos os botões “Abrir” apontam exclusivamente para os domínios oficiais de cada ferramenta (OpenAI, Google, Anthropic, xAI, Meta, Adobe etc.), garantindo sua segurança contra golpes e sites falsos.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Com que frequência o catálogo é atualizado? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><p>Semanalmente. Nossa curadoria monitora lançamentos 24h por dia e adiciona novas IAs de texto, imagem, vídeo, áudio, código e pesquisa toda semana — além de revisar preços e descrições.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">O pacote offline funciona sem internet? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><p>Sim! O arquivo Nexo-App.html contém o catálogo completo, busca e filtros funcionando offline. Só as fontes e os links externos precisam de conexão quando você quiser abrir o site oficial de uma IA.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Como sugerir uma IA para o catálogo? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><p>Envie sua sugestão pelo rodapé (link “Sugerir IA”) ou pelo e-mail sugestoes@nexohub.app. Analisamos todas as sugestões e as melhores entram na atualização seguinte.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section>
+  <div class="wrap">
+    <div class="news-box reveal">
+      <h2>Fique por dentro das <span class="grad">novas IAs</span></h2>
+      <p>Receba toda sexta-feira um resumo com as inteligências artificiais mais quentes da semana, direto no seu e-mail. Opcional e gratuito.</p>
+      <form id="formNews" novalidate>
+        <input id="emailNews" type="email" placeholder="seu@email.com" aria-label="Seu e-mail">
+        <button class="btn btn-prim" type="submit">Receber novidades</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="logo" href="#inicio"><span class="logo-mark">N</span><span class="logo-txt">NEXO<small>HUB DE IAs</small></span></a>
+        <p>O maior hub de inteligências artificiais do Brasil. Mais de 100 IAs grátis e pagas, organizadas por categoria, com acesso direto, seguro e sem cadastro.</p>
+        <div class="sociais">
+          <a href="#" class="social-link" data-rede="X" aria-label="X / Twitter"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
+          <a href="#" class="social-link" data-rede="Instagram" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-link" data-rede="YouTube" aria-label="YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2.5" y="5.8" width="19" height="12.6" rx="3.4"/><path d="M10.4 9.6v5l4.4-2.5z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-link" data-rede="LinkedIn" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.6V17M8 7.3v.1M12.2 17v-3.6c0-2.6 4-2.7 4 0V17"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Navegação</h4>
+        <a href="#inicio">Início</a>
+        <a href="#catalogo">Catálogo de IAs</a>
+        <a href="#como">Como funciona</a>
+        <a href="#app">Baixar o app</a>
+        <a href="#faq">Perguntas frequentes</a>
+      </div>
+      <div class="foot-col">
+        <h4>Categorias</h4>
+        <button data-tipo-link="chat" type="button">Chatbots &amp; Assistentes</button>
+        <button data-tipo-link="imagem" type="button">Imagens</button>
+        <button data-tipo-link="video" type="button">Vídeos</button>
+        <button data-tipo-link="audio" type="button">Áudio &amp; Música</button>
+        <button data-tipo-link="codigo" type="button">Código</button>
+        <button data-tipo-link="pesquisa" type="button">Pesquisa</button>
+      </div>
+      <div class="foot-col">
+        <h4>Suporte</h4>
+        <a href="mailto:sugestoes@nexohub.app">Sugerir uma IA</a>
+        <a href="mailto:contato@nexohub.app">Contato</a>
+        <button data-doc="termos" type="button">Termos de uso</button>
+        <button data-doc="privacidade" type="button">Política de privacidade</button>
+      </div>
+    </div>
+    <div class="foot-fim">
+      <span>© <span id="ano"></span> <b>NEXO</b> — Todos os direitos reservados.</span>
+      <span>Feito com <b>♥</b> e inteligência artificial no Brasil.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL GUIA DE INSTALAÇÃO -->
+<div class="overlay" id="guiaApp" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="guiaTitulo">
+    <button class="modal-x" id="fecharGuia" type="button" aria-label="Fechar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <h3 id="guiaTitulo">Instalar o Nexo</h3>
+    <p class="modal-sub" id="guiaSub">Siga os passos abaixo para instalar o app oficial do Nexo.</p>
+    <ol class="guia-passos" id="guiaPassos"></ol>
+    <button class="btn btn-prim" id="btnOfflineModal" type="button" style="width:100%;padding:14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4.5-4.5M12 15 7.5 10.5M4 20h16"/></svg>
+      Baixar pacote offline (.html)
+    </button>
+  </div>
+</div>
+
+<button id="btnTopo" aria-label="Voltar ao topo">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>
+</button>
+<div id="toasts" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* ============ DADOS (102 IAs) ============ */
+const TIPOS = {
+  chat:{rotulo:"Chatbot"}, imagem:{rotulo:"Imagem"}, video:{rotulo:"Vídeo"},
+  audio:{rotulo:"Áudio"}, codigo:{rotulo:"Código"}, pesquisa:{rotulo:"Pesquisa"},
+  produtividade:{rotulo:"Produtividade"}
+};
+const IAS = [
+ {nome:"ChatGPT",dev:"OpenAI",tipo:"chat",preco:"freemium",hot:true,url:"https://chatgpt.com",desc:"O assistente de IA mais popular do mundo: conversa, escreve, resume, programa e analisa imagens e arquivos."},
+ {nome:"Gemini",dev:"Google",tipo:"chat",preco:"freemium",hot:true,url:"https://gemini.google.com",desc:"IA multimodal do Google que conversa, pesquisa na web, analisa imagens e integra todo o ecossistema Google."},
+ {nome:"Claude",dev:"Anthropic",tipo:"chat",preco:"freemium",hot:true,url:"https://claude.ai",desc:"Assistente avançado com raciocínio profundo, ideal para textos longos, análise de documentos e programação."},
+ {nome:"Grok",dev:"xAI",tipo:"chat",preco:"pago",hot:true,url:"https://grok.com",desc:"A IA da xAI com acesso em tempo real ao X, respostas sem filtros e geração de imagens integrada."},
+ {nome:"Microsoft Copilot",dev:"Microsoft",tipo:"chat",preco:"gratuito",url:"https://copilot.microsoft.com",desc:"Assistente gratuito da Microsoft com tecnologia GPT, criação de imagens e integração com Windows e Office."},
+ {nome:"DeepSeek",dev:"DeepSeek AI",tipo:"chat",preco:"gratuito",url:"https://chat.deepseek.com",desc:"Modelo de código aberto com raciocínio avançado, totalmente gratuito e sem limites rígidos de uso."},
+ {nome:"Le Chat",dev:"Mistral AI",tipo:"chat",preco:"gratuito",url:"https://chat.mistral.ai",desc:"Assistente francês rápido e eficiente, com busca na web, geração de imagens e modo especialista."},
+ {nome:"Meta AI",dev:"Meta",tipo:"chat",preco:"gratuito",url:"https://meta.ai",desc:"IA da Meta integrada ao WhatsApp, Instagram e Messenger, com chat inteligente e geração de imagens."},
+ {nome:"Qwen Chat",dev:"Alibaba",tipo:"chat",preco:"gratuito",url:"https://chat.qwen.ai",desc:"Chatbot gratuito da Alibaba com modelos potentes, visão computacional e agentes de pesquisa."},
+ {nome:"Kimi",dev:"Moonshot AI",tipo:"chat",preco:"gratuito",url:"https://kimi.moonshot.ai",desc:"Especialista em documentos longos: analisa PDFs gigantes, resume e responde sempre com fontes."},
+ {nome:"Poe",dev:"Quora",tipo:"chat",preco:"freemium",url:"https://poe.com",desc:"Plataforma que reúne dezenas de modelos de IA (GPT, Claude, Gemini e outros) em um único app."},
+ {nome:"Character.AI",dev:"Character AI",tipo:"chat",preco:"freemium",url:"https://character.ai",desc:"Converse com personagens criados pela comunidade: históricos, fictícios ou totalmente originais."},
+ {nome:"HuggingChat",dev:"Hugging Face",tipo:"chat",preco:"gratuito",url:"https://huggingface.co/chat",desc:"Chatbot 100% open source com os melhores modelos abertos do momento, sem custo algum."},
+ {nome:"Pi",dev:"Inflection AI",tipo:"chat",preco:"gratuito",url:"https://pi.ai",desc:"Assistente empático e conversacional, ideal para desabafar, refletir e conversar com naturalidade."},
+ {nome:"Manus",dev:"Manus AI",tipo:"chat",preco:"freemium",url:"https://manus.im",desc:"Agente autônomo que executa tarefas complexas sozinho: pesquisas, planilhas, sites e relatórios."},
+ {nome:"OpenRouter",dev:"OpenRouter",tipo:"chat",preco:"freemium",url:"https://openrouter.ai",desc:"Acesse centenas de modelos (GPT, Claude, Gemini e mais) em um só lugar e compare respostas."},
+ {nome:"Duck.ai",dev:"DuckDuckGo",tipo:"chat",preco:"gratuito",url:"https://duck.ai",desc:"Chatbot gratuito da DuckDuckGo com privacidade total: sem conta, sem rastreamento, sem histórico."},
+ {nome:"Replika",dev:"Luka Inc",tipo:"chat",preco:"freemium",url:"https://replika.com",desc:"Companheiro de IA para conversar, desabafar e evoluir um relacionamento digital personalizado."},
+ {nome:"Midjourney",dev:"Midjourney",tipo:"imagem",preco:"pago",hot:true,url:"https://www.midjourney.com",desc:"Referência mundial em geração de imagens artísticas, com qualidade e estética impressionantes."},
+ {nome:"Leonardo AI",dev:"Leonardo Interactive",tipo:"imagem",preco:"freemium",url:"https://leonardo.ai",desc:"Suíte completa para criar imagens, artes de jogos e assets com controle avançado de estilo."},
+ {nome:"Ideogram",dev:"Ideogram AI",tipo:"imagem",preco:"freemium",url:"https://ideogram.ai",desc:"Especialista em imagens com textos perfeitos: logos, pôsteres e tipografia impecável."},
+ {nome:"Adobe Firefly",dev:"Adobe",tipo:"imagem",preco:"freemium",url:"https://www.adobe.com/products/firefly.html",desc:"IA generativa da Adobe para criar e editar imagens com segurança para uso comercial."},
+ {nome:"Clipdrop",dev:"Stability AI",tipo:"imagem",preco:"freemium",url:"https://clipdrop.co",desc:"Ferramentas mágicas de edição: remover fundo, ampliar, reiluminar e expandir fotos em segundos."},
+ {nome:"Canva IA",dev:"Canva",tipo:"imagem",preco:"freemium",url:"https://www.canva.com",desc:"Estúdio Mágico do Canva: gere imagens, edite com IA e crie designs completos sem esforço."},
+ {nome:"Freepik IA",dev:"Freepik",tipo:"imagem",preco:"freemium",url:"https://www.freepik.com/ai",desc:"Gerador de imagens e mockups com milhões de recursos gráficos profissionais integrados."},
+ {nome:"Playground",dev:"Playground AI",tipo:"imagem",preco:"freemium",url:"https://playground.com",desc:"Crie e edite imagens com IA em um canvas intuitivo, com plano gratuito generoso."},
+ {nome:"Krea",dev:"Krea AI",tipo:"imagem",preco:"freemium",url:"https://www.krea.ai",desc:"Geração em tempo real, upscale e aprimoramento de imagens com controle instantâneo."},
+ {nome:"Bing Image Creator",dev:"Microsoft",tipo:"imagem",preco:"gratuito",url:"https://www.bing.com/images/create",desc:"Crie imagens grátis com DALL·E direto no navegador, usando sua conta Microsoft."},
+ {nome:"Recraft",dev:"Recraft AI",tipo:"imagem",preco:"freemium",url:"https://www.recraft.ai",desc:"Design profissional vetorial e raster com controle preciso de estilo, marca e composição."},
+ {nome:"Magnific AI",dev:"Magnific",tipo:"imagem",preco:"pago",url:"https://magnific.ai",desc:"Upscale que reinventa detalhes: transforma qualquer imagem em obra-prima em altíssima resolução."},
+ {nome:"Photoroom",dev:"Photoroom",tipo:"imagem",preco:"freemium",url:"https://www.photoroom.com",desc:"Estúdio de fotos com IA: remove fundo, cria cenários de produto e retoques profissionais."},
+ {nome:"Remove.bg",dev:"Kaleido AI",tipo:"imagem",preco:"freemium",url:"https://www.remove.bg",desc:"Remove o fundo de qualquer foto em segundos, 100% automático e com precisão absurda."},
+ {nome:"Upscayl",dev:"Upscayl",tipo:"imagem",preco:"gratuito",url:"https://upscayl.org",desc:"Upscale de imagens open source, grátis e offline, direto no seu computador."},
+ {nome:"Pixlr AI",dev:"Pixlr",tipo:"imagem",preco:"freemium",url:"https://pixlr.com",desc:"Editor de fotos online com IA: gere, recorte, retoque e aplique efeitos em segundos."},
+ {nome:"Runway",dev:"Runway ML",tipo:"video",preco:"freemium",url:"https://runwayml.com",desc:"Suíte profissional de vídeo com IA: texto para vídeo, remoção de fundo e efeitos avançados."},
+ {nome:"Pika",dev:"Pika Labs",tipo:"video",preco:"freemium",url:"https://pika.art",desc:"Crie e edite vídeos curtos a partir de texto ou imagem com efeitos criativos únicos."},
+ {nome:"Sora",dev:"OpenAI",tipo:"video",preco:"pago",url:"https://sora.com",desc:"Modelo de vídeo da OpenAI que gera cenas realistas e cinematográficas a partir de texto."},
+ {nome:"Kling AI",dev:"Kuaishou",tipo:"video",preco:"freemium",url:"https://klingai.com",desc:"Vídeos ultrarrealistas de até 2 minutos com movimentos fluidos e física convincente."},
+ {nome:"Luma Dream Machine",dev:"Luma AI",tipo:"video",preco:"freemium",url:"https://lumalabs.ai",desc:"Geração de vídeos e imagens de alta qualidade com transições suaves e câmera dinâmica."},
+ {nome:"HeyGen",dev:"HeyGen",tipo:"video",preco:"freemium",url:"https://www.heygen.com",desc:"Avatares falantes realistas: transforme texto em vídeos com apresentadores virtuais em 40+ idiomas."},
+ {nome:"Synthesia",dev:"Synthesia",tipo:"video",preco:"pago",url:"https://www.synthesia.io",desc:"Vídeos corporativos com avatares de IA, usado por milhares de empresas no mundo inteiro."},
+ {nome:"CapCut",dev:"ByteDance",tipo:"video",preco:"gratuito",url:"https://www.capcut.com",desc:"Editor de vídeo gratuito com IA: legendas automáticas, cortes inteligentes e efeitos virais."},
+ {nome:"Veed",dev:"Veed.io",tipo:"video",preco:"freemium",url:"https://www.veed.io",desc:"Editor online com legendas automáticas, tradução, avatares e limpeza de áudio por IA."},
+ {nome:"InVideo",dev:"InVideo",tipo:"video",preco:"freemium",url:"https://invideo.io",desc:"Crie vídeos completos a partir de um prompt: roteiro, narração, cenas e trilha inclusos."},
+ {nome:"Descript",dev:"Descript",tipo:"video",preco:"freemium",url:"https://www.descript.com",desc:"Edite vídeos e podcasts como se fosse texto: transcreva, corte e duble com IA."},
+ {nome:"PixVerse",dev:"PixVerse",tipo:"video",preco:"freemium",url:"https://pixverse.ai",desc:"Vídeos a partir de texto e imagem com efeitos cinematográficos e resolução 4K."},
+ {nome:"Haiper",dev:"Haiper AI",tipo:"video",preco:"freemium",url:"https://haiper.ai",desc:"Geração de vídeos curtos realistas com controles intuitivos de câmera e estilo."},
+ {nome:"Genmo",dev:"Genmo AI",tipo:"video",preco:"freemium",url:"https://www.genmo.ai",desc:"Vídeos e animações 3D criativos e experimentais a partir de prompts simples."},
+ {nome:"D-ID",dev:"D-ID",tipo:"video",preco:"freemium",url:"https://www.d-id.com",desc:"Anima rostos e fotos em vídeos falantes com sincronia labial perfeita."},
+ {nome:"OpusClip",dev:"Opus",tipo:"video",preco:"freemium",url:"https://www.opus.pro",desc:"Transforma vídeos longos em clipes virais para Reels e Shorts com IA."},
+ {nome:"Captions",dev:"Captions AI",tipo:"video",preco:"freemium",url:"https://www.captions.ai",desc:"Legendas dinâmicas, contato visual e edição com IA para vídeos falados."},
+ {nome:"FlexClip",dev:"FlexClip",tipo:"video",preco:"freemium",url:"https://www.flexclip.com",desc:"Editor online com IA: texto para vídeo, legendas automáticas e milhares de templates."},
+ {nome:"Suno",dev:"Suno AI",tipo:"audio",preco:"freemium",hot:true,url:"https://suno.com",desc:"Crie músicas completas com voz e instrumentos a partir de uma simples descrição em texto."},
+ {nome:"Udio",dev:"Udio",tipo:"audio",preco:"freemium",url:"https://www.udio.com",desc:"Geração musical de altíssima qualidade em qualquer gênero, com controle total de estilo."},
+ {nome:"ElevenLabs",dev:"ElevenLabs",tipo:"audio",preco:"freemium",url:"https://elevenlabs.io",desc:"As vozes mais realistas do mercado: narração, clonagem de voz e dublagem em 30+ idiomas."},
+ {nome:"Murf",dev:"Murf AI",tipo:"audio",preco:"pago",url:"https://murf.ai",desc:"Estúdio de voz profissional para vídeos, apresentações, e-learning e audiolivros."},
+ {nome:"Soundraw",dev:"Soundraw",tipo:"audio",preco:"pago",url:"https://soundraw.io",desc:"Trilhas sonoras originais e livres de direitos autorais, personalizadas pela IA."},
+ {nome:"Otter",dev:"Otter.ai",tipo:"audio",preco:"freemium",url:"https://otter.ai",desc:"Transcrição automática de reuniões e entrevistas com resumos inteligentes em tempo real."},
+ {nome:"AIVA",dev:"AIVA",tipo:"audio",preco:"freemium",url:"https://www.aiva.ai",desc:"Compõe trilhas sonoras originais e música clássica com IA, pronta para uso comercial."},
+ {nome:"Mubert",dev:"Mubert",tipo:"audio",preco:"freemium",url:"https://mubert.com",desc:"Música generativa infinita e livre de royalties para streams, vídeos e apps."},
+ {nome:"Speechify",dev:"Speechify",tipo:"audio",preco:"freemium",url:"https://speechify.com",desc:"Transforma qualquer texto ou PDF em áudio natural com vozes de celebridades."},
+ {nome:"PlayHT",dev:"PlayHT",tipo:"audio",preco:"freemium",url:"https://play.ht",desc:"Conversão de texto em fala ultrarrealista com mais de 140 idiomas e clonagem de voz."},
+ {nome:"Beatoven",dev:"Beatoven AI",tipo:"audio",preco:"freemium",url:"https://www.beatoven.ai",desc:"Trilhas sonoras sob medida por humor, gênero e duração para vídeos e podcasts."},
+ {nome:"Loudly",dev:"Loudly",tipo:"audio",preco:"freemium",url:"https://www.loudly.com",desc:"Cria faixas completas escolhendo gênero, instrumentos, energia e duração."},
+ {nome:"GitHub Copilot",dev:"GitHub / Microsoft",tipo:"codigo",preco:"pago",url:"https://github.com/features/copilot",desc:"O pair programmer de IA mais usado do mundo: autocompleta e explica código em qualquer linguagem."},
+ {nome:"Cursor",dev:"Anysphere",tipo:"codigo",preco:"freemium",url:"https://cursor.com",desc:"Editor de código com IA nativa: edite arquivos inteiros e converse com sua base de código."},
+ {nome:"Replit",dev:"Replit",tipo:"codigo",preco:"freemium",url:"https://replit.com",desc:"IDE na nuvem com agente de IA que cria aplicativos completos a partir de prompts."},
+ {nome:"Windsurf",dev:"Codeium",tipo:"codigo",preco:"freemium",url:"https://windsurf.com",desc:"Editor agêntico que entende todo o seu projeto e implementa funcionalidades sozinho."},
+ {nome:"v0",dev:"Vercel",tipo:"codigo",preco:"freemium",url:"https://v0.dev",desc:"Gere interfaces e componentes React prontos a partir de descrições em linguagem natural."},
+ {nome:"Bolt",dev:"StackBlitz",tipo:"codigo",preco:"freemium",url:"https://bolt.new",desc:"Crie aplicações web completas no navegador, do prompt ao deploy em segundos."},
+ {nome:"Tabnine",dev:"Tabnine",tipo:"codigo",preco:"freemium",url:"https://www.tabnine.com",desc:"Autocompletar de código privado e seguro, treinado apenas em código open source."},
+ {nome:"Amazon Q Developer",dev:"AWS",tipo:"codigo",preco:"freemium",url:"https://aws.amazon.com/q/developer/",desc:"IA da Amazon para gerar, revisar e depurar código com foco em segurança e AWS."},
+ {nome:"Ollama",dev:"Ollama",tipo:"codigo",preco:"gratuito",url:"https://ollama.com",desc:"Rode modelos open source (Llama, Mistral, Qwen) localmente na sua máquina, grátis."},
+ {nome:"LM Studio",dev:"LM Studio",tipo:"codigo",preco:"gratuito",url:"https://lmstudio.ai",desc:"App de desktop para rodar LLMs offline com interface gráfica e biblioteca de modelos."},
+ {nome:"Cody",dev:"Sourcegraph",tipo:"codigo",preco:"freemium",url:"https://sourcegraph.com/cody",desc:"Agente de IA que lê e entende toda a sua base de código para responder e editar."},
+ {nome:"Google AI Studio",dev:"Google",tipo:"codigo",preco:"gratuito",url:"https://aistudio.google.com",desc:"Playground oficial da API Gemini: teste modelos, crie prompts e integre em apps."},
+ {nome:"Blackbox AI",dev:"Blackbox",tipo:"codigo",preco:"freemium",url:"https://www.blackbox.ai",desc:"Chat focado em código com autocomplete, geração e explicação em mais de 20 linguagens."},
+ {nome:"Perplexity",dev:"Perplexity AI",tipo:"pesquisa",preco:"freemium",hot:true,url:"https://www.perplexity.ai",desc:"Motor de respostas com fontes citadas: a evolução definitiva da pesquisa na internet."},
+ {nome:"You.com",dev:"You.com",tipo:"pesquisa",preco:"freemium",url:"https://you.com",desc:"Busca com IA que resume resultados e deixa você escolher entre vários modelos."},
+ {nome:"Consensus",dev:"Consensus",tipo:"pesquisa",preco:"freemium",url:"https://consensus.app",desc:"Pesquisa acadêmica com IA: respostas baseadas em artigos científicos revisados por pares."},
+ {nome:"Elicit",dev:"Elicit",tipo:"pesquisa",preco:"freemium",url:"https://elicit.com",desc:"Assistente de pesquisa científica: encontra, resume e compara estudos automaticamente."},
+ {nome:"SciSpace",dev:"SciSpace",tipo:"pesquisa",preco:"freemium",url:"https://scispace.com",desc:"Leia e entenda artigos científicos complexos com explicações em linguagem simples."},
+ {nome:"Exa",dev:"Exa AI",tipo:"pesquisa",preco:"freemium",url:"https://exa.ai",desc:"Busca semântica poderosa para encontrar exatamente o que você precisa na web."},
+ {nome:"Phind",dev:"Phind",tipo:"pesquisa",preco:"freemium",url:"https://www.phind.com",desc:"Motor de busca para devs: respostas técnicas com código, fontes e explicações."},
+ {nome:"ScholarAI",dev:"ScholarAI",tipo:"pesquisa",preco:"freemium",url:"https://scholarai.io",desc:"IA que busca e resume mais de 200 milhões de papers científicos em segundos."},
+ {nome:"iAsk",dev:"iAsk AI",tipo:"pesquisa",preco:"gratuito",url:"https://iask.ai",desc:"Motor de respostas instantâneas e gratuito que não rastreia nem armazena seus dados."},
+ {nome:"Notion AI",dev:"Notion",tipo:"produtividade",preco:"pago",url:"https://www.notion.so/product/ai",desc:"Escreva, resuma e organize ideias com IA dentro do workspace mais popular do mundo."},
+ {nome:"Jasper",dev:"Jasper AI",tipo:"produtividade",preco:"pago",url:"https://www.jasper.ai",desc:"Plataforma de marketing com IA para criar campanhas, artigos e copies em escala."},
+ {nome:"Copy.ai",dev:"Copy.ai",tipo:"produtividade",preco:"freemium",url:"https://www.copy.ai",desc:"Gere textos de marketing, e-mails e posts para redes sociais em segundos."},
+ {nome:"Grammarly",dev:"Grammarly",tipo:"produtividade",preco:"freemium",url:"https://www.grammarly.com",desc:"Correção gramatical e reescrita inteligente com tom e clareza perfeitos."},
+ {nome:"Gamma",dev:"Gamma App",tipo:"produtividade",preco:"freemium",url:"https://gamma.app",desc:"Apresentações, documentos e sites lindos gerados por IA a partir de um único prompt."},
+ {nome:"Tome",dev:"Tome",tipo:"produtividade",preco:"freemium",url:"https://tome.app",desc:"Crie apresentações narrativas com design impecável usando apenas texto."},
+ {nome:"QuillBot",dev:"QuillBot",tipo:"produtividade",preco:"freemium",url:"https://quillbot.com",desc:"Parafraseie, resuma e corrija textos em um clique, com vários modos de reescrita."},
+ {nome:"Wordtune",dev:"Wordtune",tipo:"produtividade",preco:"freemium",url:"https://www.wordtune.com",desc:"Reescreve frases com tons diferentes: formal, casual, curto ou expandido."},
+ {nome:"DeepL Write",dev:"DeepL",tipo:"produtividade",preco:"freemium",url:"https://www.deepl.com/write",desc:"Melhora clareza, gramática e estilo da sua escrita instantaneamente."},
+ {nome:"ChatPDF",dev:"ChatPDF",tipo:"produtividade",preco:"freemium",url:"https://www.chatpdf.com",desc:"Converse com qualquer PDF: extraia respostas, resumos e traduções em segundos."},
+ {nome:"Rytr",dev:"Rytr",tipo:"produtividade",preco:"freemium",url:"https://rytr.me",desc:"Redação de marketing em mais de 40 templates e 30 idiomas, com plano grátis."},
+ {nome:"Writesonic",dev:"Writesonic",tipo:"produtividade",preco:"freemium",url:"https://writesonic.com",desc:"Artigos SEO, anúncios e descrições de produto com IA otimizada para conversão."},
+ {nome:"Taskade",dev:"Taskade",tipo:"produtividade",preco:"freemium",url:"https://www.taskade.com",desc:"Tarefas, notas e mapas mentais com agentes de IA trabalhando em equipe."},
+ {nome:"Beautiful.ai",dev:"Beautiful.ai",tipo:"produtividade",preco:"pago",url:"https://www.beautiful.ai",desc:"Apresentações que se desenham sozinhas com templates inteligentes e design automático."},
+ {nome:"Framer AI",dev:"Framer",tipo:"produtividade",preco:"freemium",url:"https://www.framer.com",desc:"Crie sites profissionais a partir de um prompt e publique em minutos, sem código."},
+ {nome:"AutoGPT",dev:"Toran Bruce Richards",tipo:"produtividade",preco:"gratuito",url:"https://agpt.co",desc:"Agente autônomo open source que encadeia tarefas até concluir seu objetivo."}
+];
+
+/* ============ ESTADO E ELEMENTOS ============ */
+const estado = {busca:"", preco:"tudo", tipo:"tudo"};
+const grade = document.getElementById("grade");
+const contador = document.getElementById("contador");
+const vazio = document.getElementById("vazio");
+
+/* ============ UTILITÁRIOS ============ */
+function toast(msg, icone){
+  const caixa = document.getElementById("toasts");
+  const el = document.createElement("div");
+  el.className = "toast";
+  el.innerHTML = '<span style="font-size:1.15rem">'+(icone||"✅")+'</span><span>'+msg+'</span>';
+  caixa.appendChild(el);
+  setTimeout(function(){ el.classList.add("saindo"); setTimeout(function(){ el.remove(); }, 320); }, 3600);
+}
+function emailValido(v){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); }
+function iniciais(nome){
+  const partes = nome.trim().split(/\s+/);
+  let s = partes[0].charAt(0);
+  if(partes.length > 1) s += partes[1].charAt(0);
+  return s.toUpperCase();
+}
+
+/* ============ PWA: MANIFESTO + ÍCONE (instalação de verdade) ============ */
+(function pwaSetup(){
+  const svgIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#05070e"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset=".5" stop-color="#22c55e"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><text x="50" y="74" font-size="64" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" fill="url(#g)">N</text></svg>';
+  const icone = "data:image/svg+xml," + encodeURIComponent(svgIcon);
+  const manifesto = {
+    name:"Nexo — Hub de IAs",
+    short_name:"Nexo",
+    description:"Todas as IAs do mundo em um só lugar.",
+    id:"nexo-hub-ias",
+    start_url: location.href.split("#")[0],
+    scope: location.href.split("#")[0].replace(/[^/]*$/, ""),
+    display:"standalone",
+    orientation:"portrait",
+    background_color:"#05070e",
+    theme_color:"#05070e",
+    lang:"pt-BR",
+    icons:[
+      {src:icone, sizes:"any", type:"image/svg+xml", purpose:"any"},
+      {src:icone, sizes:"192x192 512x512", type:"image/svg+xml", purpose:"any maskable"}
+    ]
+  };
+  const link = document.createElement("link");
+  link.rel = "manifest";
+  link.href = "data:application/manifest+json," + encodeURIComponent(JSON.stringify(manifesto));
+  document.head.appendChild(link);
+
+  /* ícone PNG real para iOS (gerado em canvas) */
+  try{
+    const c = document.createElement("canvas");
+    c.width = 180; c.height = 180;
+    const x = c.getContext("2d");
+    x.fillStyle = "#05070e"; x.fillRect(0,0,180,180);
+    const g = x.createLinearGradient(0,0,180,180);
+    g.addColorStop(0,"#3b82f6"); g.addColorStop(.5,"#22c55e"); g.addColorStop(1,"#8b5cf6");
+    x.fillStyle = g; x.font = "bold 110px Arial, sans-serif";
+    x.textAlign = "center"; x.textBaseline = "middle";
+    x.fillText("N", 90, 98);
+    const l = document.createElement("link");
+    l.rel = "apple-touch-icon";
+    l.href = c.toDataURL("image/png");
+    document.head.appendChild(l);
+  }catch(e){}
+})();
+
+/* captura do prompt nativo de instalação (Android/Windows/macOS/Linux) */
+let promptInstalacao = null;
+window.addEventListener("beforeinstallprompt", function(e){
+  e.preventDefault();
+  promptInstalacao = e;
+});
+window.addEventListener("appinstalled", function(){
+  promptInstalacao = null;
+  toast("Nexo instalado com sucesso no seu dispositivo!", "🎉");
+});
+
+/* ============ CATÁLOGO ============ */
+function cardHTML(a, i){
+  const mapa = {gratuito:["Grátis","pb-verde"], freemium:["Grátis+","pb-azul"], pago:["Pago","pb-roxo"]};
+  const info = mapa[a.preco];
+  return '<article class="ai-card reveal" style="animation-delay:'+((i%8)*45)+'ms">'
+    + '<div class="ai-topo"><div class="ai-avatar g'+((i%6)+1)+'">'+iniciais(a.nome)+'</div>'
+    + '<div class="ai-info"><h3>'+a.nome+(a.hot?'<span class="hot">POPULAR</span>':'')+'</h3><span class="ai-dev">'+a.dev+'</span></div>'
+    + '<span class="preco '+info[1]+'">'+info[0]+'</span></div>'
+    + '<p class="ai-desc">'+a.desc+'</p>'
+    + '<div class="ai-rodape"><span class="tipo-tag">'+TIPOS[a.tipo].rotulo+'</span>'
+    + '<a class="abrir" href="'+a.url+'" target="_blank" rel="noopener noreferrer">Abrir '+a.nome
+    + ' <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div></article>';
+}
+function render(){
+  const termo = estado.busca.toLowerCase().trim();
+  const lista = IAS.filter(function(a){
+    const okPreco = estado.preco==="tudo" || (estado.preco==="gratis" ? a.preco!=="pago" : a.preco==="pago");
+    const okTipo = estado.tipo==="tudo" || a.tipo===estado.tipo;
+    const okBusca = !termo || (a.nome+" "+a.dev+" "+a.desc).toLowerCase().indexOf(termo) !== -1;
+    return okPreco && okTipo && okBusca;
+  });
+  grade.innerHTML = lista.map(cardHTML).join("");
+  contador.innerHTML = "<b>"+lista.length+"</b> "+(lista.length===1?"IA encontrada":"IAs encontradas")+" no catálogo Nexo";
+  vazio.style.display = lista.length ? "none" : "block";
+  observarReveals();
+}
+
+/* chips de tipo com contagem */
+(function montarChips(){
+  const caixa = document.getElementById("chipsTipo");
+  const cont = {tudo: IAS.length};
+  IAS.forEach(function(a){ cont[a.tipo] = (cont[a.tipo]||0)+1; });
+  let html = '<button class="chip ativo" data-tipo="tudo" type="button">Todos ('+cont.tudo+')</button>';
+  Object.keys(TIPOS).forEach(function(t){
+    html += '<button class="chip" data-tipo="'+t+'" type="button">'+TIPOS[t].rotulo+' ('+(cont[t]||0)+')</button>';
+  });
+  caixa.innerHTML = html;
+  caixa.addEventListener("click", function(e){
+    const btn = e.target.closest(".chip");
+    if(!btn) return;
+    caixa.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("ativo"); });
+    btn.classList.add("ativo");
+    estado.tipo = btn.dataset.tipo;
+    render();
+  });
+})();
+
+/* segmento de preço */
+document.getElementById("segPreco").addEventListener("click", function(e){
+  const btn = e.target.closest("button");
+  if(!btn) return;
+  this.querySelectorAll("button").forEach(function(b){ b.classList.remove("ativo"); });
+  btn.classList.add("ativo");
+  estado.preco = btn.dataset.preco;
+  render();
+});
+
+/* busca */
+document.getElementById("busca").addEventListener("input", function(){
+  estado.busca = this.value;
+  render();
+});
+
+/* links de categoria no rodapé */
+document.querySelectorAll("[data-tipo-link]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    estado.tipo = btn.dataset.tipoLink;
+    document.querySelectorAll("#chipsTipo .chip").forEach(function(c){
+      c.classList.toggle("ativo", c.dataset.tipo === estado.tipo);
+    });
+    render();
+    document.getElementById("catalogo").scrollIntoView({behavior:"smooth"});
+    toast("Filtro aplicado: "+TIPOS[estado.tipo].rotulo, "🧭");
+  });
+});
+
+/* ============ MARQUEE (sem duplicatas) ============ */
+(function montarMarquee(){
+  const vistos = {};
+  const nomes = [];
+  IAS.forEach(function(a){
+    if(!vistos[a.nome]){ vistos[a.nome] = true; nomes.push(a.nome); }
+  });
+  const selecao = nomes.slice(0, 40);
+  let seq = "";
+  selecao.forEach(function(n){ seq += '<span class="mq-item"><b>✦</b>'+n+'</span>'; });
+  document.getElementById("marqueeTrack").innerHTML = seq + seq;
+})();
+
+/* ============ CANVAS (animação de rede) ============ */
+(function canvasRede(){
+  const cv = document.getElementById("netCanvas");
+  const ctx = cv.getContext("2d");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const CORES = ["59,130,246","34,197,94","139,92,246","56,189,248"];
+  let pontos = [], W = 0, H = 0;
+  function redim(){
+    const r = cv.parentElement.getBoundingClientRect();
+    W = cv.width = r.width * dpr;
+    H = cv.height = r.height * dpr;
+    cv.style.width = r.width + "px";
+    cv.style.height = r.height + "px";
+    const n = Math.min(100, Math.floor(r.width * r.height / 17000));
+    pontos = [];
+    for(let i=0;i<n;i++){
+      pontos.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-.5)*.45*dpr, vy: (Math.random()-.5)*.45*dpr,
+        r: (Math.random()*1.5+.8)*dpr,
+        c: CORES[Math.floor(Math.random()*CORES.length)]
+      });
+    }
+  }
+  function passo(){
+    if(!document.hidden){
+      ctx.clearRect(0,0,W,H);
+      const dist = 135*dpr;
+      for(const p of pontos){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x < 0 || p.x > W) p.vx *= -1;
+        if(p.y < 0 || p.y > H) p.vy *= -1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+        ctx.fillStyle = "rgba("+p.c+",.85)"; ctx.fill();
+      }
+      for(let i=0;i<pontos.length;i++){
+        for(let j=i+1;j<pontos.length;j++){
+          const a = pontos[i], b = pontos[j];
+          const dx = a.x-b.x, dy = a.y-b.y, d = dx*dx+dy*dy;
+          if(d < dist*dist){
+            const o = (1 - Math.sqrt(d)/dist) * .26;
+            ctx.strokeStyle = "rgba("+a.c+","+o.toFixed(3)+")";
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          }
+        }
+      }
+    }
+    requestAnimationFrame(passo);
+  }
+  window.addEventListener("resize", redim);
+  redim(); passo();
+})();
+
+/* ============ REVEAL + CONTADORES ============ */
+const obs = new IntersectionObserver(function(entradas){
+  entradas.forEach(function(en){
+    if(en.isIntersecting){ en.target.classList.add("visible"); obs.unobserve(en.target); }
+  });
+}, {threshold:.12});
+function observarReveals(){
+  document.querySelectorAll(".reveal:not(.visible)").forEach(function(el){ obs.observe(el); });
+}
+const obsStats = new IntersectionObserver(function(entradas){
+  entradas.forEach(function(en){
+    if(en.isIntersecting){ animarContadores(); obsStats.disconnect(); }
+  });
+}, {threshold:.4});
+function animarContadores(){
+  document.querySelectorAll("[data-alvo]").forEach(function(el){
+    const alvo = +el.dataset.alvo, suf = el.dataset.sufixo || "";
+    const ini = performance.now(), dur = 1500;
+    function tick(ag){
+      const p = Math.min((ag-ini)/dur, 1);
+      const e = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(alvo*e) + suf;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+obsStats.observe(document.querySelector(".stats"));
+
+/* ============ FAQ ============ */
+document.querySelectorAll(".faq-item").forEach(function(item){
+  item.querySelector(".faq-q").addEventListener("click", function(){
+    const aberto = item.classList.contains("aberto");
+    document.querySelectorAll(".faq-item.aberto").forEach(function(o){
+      o.classList.remove("aberto");
+      o.querySelector(".faq-a").style.maxHeight = null;
+    });
+    if(!aberto){
+      item.classList.add("aberto");
+      const a = item.querySelector(".faq-a");
+      a.style.maxHeight = a.scrollHeight + "px";
+    }
+  });
+});
+
+/* ============ INSTALAÇÃO DO APP (funciona de verdade) ============ */
+const GUIAS = {
+  android:{titulo:"Instalar o Nexo no Android", sub:"O app fica na sua tela inicial e abre em tela cheia, como um app nativo.", passos:[
+    "Abra este site no navegador Chrome.",
+    "Toque no menu de 3 pontinhos (⋮) no canto superior direito.",
+    "Toque em “Instalar app” ou “Adicionar à tela inicial”.",
+    "Confirme em “Instalar”. O ícone do Nexo aparecerá na sua tela inicial!"]},
+  ios:{titulo:"Instalar o Nexo no iPhone / iPad", sub:"Pelo Safari, o Nexo vira um ícone na sua Tela de Início.", passos:[
+    "Abra este site no navegador Safari.",
+    "Toque no botão Compartilhar (o quadrado com a seta ↑).",
+    "Role a lista e toque em “Adicionar à Tela de Início”.",
+    "Toque em “Adicionar”. O app do Nexo aparecerá na sua Tela de Início!"]},
+  windows:{titulo:"Instalar o Nexo no Windows", sub:"O Nexo vira um app de desktop com atalho no Menu Iniciar.", passos:[
+    "Abra este site no Chrome ou no Microsoft Edge.",
+    "Clique no ícone de instalar (⊕) à direita da barra de endereço.",
+    "Ou abra o menu (⋮ / ⋯) e clique em “Instalar Nexo”.",
+    "Clique em “Instalar”. O app abrirá em janela própria e ficará no Menu Iniciar!"]},
+  macos:{titulo:"Instalar o Nexo no macOS", sub:"O Nexo aparece no Launchpad e no Dock como um app nativo.", passos:[
+    "Abra este site no Chrome ou no Microsoft Edge.",
+    "Clique no ícone de instalar à direita da barra de endereço.",
+    "Ou abra o menu (⋮ / ) e clique em “Instalar Nexo”.",
+    "Clique em “Instalar”. O app ficará disponível no Launchpad!"]},
+  linux:{titulo:"Instalar o Nexo no Linux", sub:"Funciona em Chrome, Chromium e Edge com atalho no menu de apps.", passos:[
+    "Abra este site no Chrome, Chromium ou Edge.",
+    "Clique no ícone de instalar à direita da barra de endereço.",
+    "Ou abra o menu (⋮ / ) e clique em “Instalar Nexo”.",
+    "Clique em “Instalar”. O atalho aparecerá no menu de aplicativos!"]}
+};
+const guiaApp = document.getElementById("guiaApp");
+const guiaTitulo = document.getElementById("guiaTitulo");
+const guiaSub = document.getElementById("guiaSub");
+const guiaPassos = document.getElementById("guiaPassos");
+
+function abrirGuia(plat){
+  const g = GUIAS[plat];
+  if(!g) return;
+  guiaTitulo.textContent = g.titulo;
+  guiaSub.textContent = g.sub;
+  guiaPassos.innerHTML = g.passos.map(function(p){ return "<li>"+p+"</li>"; }).join("");
+  guiaApp.classList.add("aberto");
+  guiaApp.setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+}
+function fecharGuia(){
+  guiaApp.classList.remove("aberto");
+  guiaApp.setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+}
+document.getElementById("fecharGuia").addEventListener("click", fecharGuia);
+guiaApp.addEventListener("click", function(e){ if(e.target === guiaApp) fecharGuia(); });
+document.addEventListener("keydown", function(e){ if(e.key === "Escape" && guiaApp.classList.contains("aberto")) fecharGuia(); });
+
+function instalarApp(plat){
+  const nomePlat = GUIAS[plat] ? GUIAS[plat].titulo.replace("Instalar o Nexo no ", "") : plat;
+  if(promptInstalacao && plat !== "ios"){
+    try{
+      promptInstalacao.prompt();
+      promptInstalacao.userChoice.then(function(res){
+        if(res.outcome === "accepted"){
+          toast("Instalação do Nexo para "+nomePlat+" confirmada!", "🎉");
+        }else{
+          toast("Instalação cancelada. Toque em Instalar quando quiser.", "ℹ️");
+        }
+        promptInstalacao = null;
+      });
+      return;
+    }catch(e){ /* segue para o guia */ }
+  }
+  abrirGuia(plat);
+  toast("Guia de instalação para "+nomePlat+" aberto.", "📲");
+}
+document.querySelectorAll(".plat-btn").forEach(function(btn){
+  btn.addEventListener("click", function(){ instalarApp(btn.dataset.plat); });
+});
+
+/* pacote offline: baixa o app inteiro em um arquivo .html que funciona de verdade */
+function baixarOffline(){
+  try{
+    const html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+    const blob = new Blob([html], {type:"text/html;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "Nexo-App-v3.0.0.html";
+    link.rel = "noopener";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+    toast("Download concluído! Abra o arquivo Nexo-App em qualquer navegador.", "📦");
+  }catch(erro){
+    toast("Não foi possível gerar o pacote. Tente novamente.", "⚠️");
+  }
+}
+document.getElementById("btnOffline").addEventListener("click", baixarOffline);
+document.getElementById("btnOfflineModal").addEventListener("click", baixarOffline);
+
+/* ============ NEWSLETTER ============ */
+document.getElementById("formNews").addEventListener("submit", function(e){
+  e.preventDefault();
+  const campo = document.getElementById("emailNews");
+  const valor = campo.value.trim();
+  if(!emailValido(valor)){
+    toast("Digite um e-mail válido para continuar.", "⚠️");
+    campo.focus();
+    return;
+  }
+  try{ localStorage.setItem("nexo_newsletter", valor); }catch(err){}
+  campo.value = "";
+  toast("Inscrição confirmada! Bem-vindo(a) ao Nexo.", "🚀");
+});
+
+/* ============ REDES SOCIAIS / DOCUMENTOS ============ */
+document.querySelectorAll(".social-link").forEach(function(link){
+  link.addEventListener("click", function(e){
+    e.preventDefault();
+    toast("Siga o Nexo no "+link.dataset.rede+" — em breve!", "🔗");
+  });
+});
+document.querySelectorAll("[data-doc]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    toast((btn.dataset.doc === "termos" ? "Termos de uso" : "Política de privacidade") + " disponíveis em breve.", "📄");
+  });
+});
+
+/* ============ NAV / TOPO ============ */
+const nav = document.getElementById("nav");
+const btnTopo = document.getElementById("btnTopo");
+const hamb = document.getElementById("hamb");
+const menu = document.getElementById("menu");
+function fecharMenuMobile(){
+  menu.classList.remove("aberto");
+  hamb.classList.remove("aberto");
+}
+window.addEventListener("scroll", function(){
+  nav.classList.toggle("rolou", window.scrollY > 30);
+  btnTopo.classList.toggle("visivel", window.scrollY > 650);
+}, {passive:true});
+btnTopo.addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
+hamb.addEventListener("click", function(){
+  menu.classList.toggle("aberto");
+  hamb.classList.toggle("aberto");
+});
+menu.querySelectorAll("a").forEach(function(a){
+  a.addEventListener("click", function(){ fecharMenuMobile(); });
+});
+
+/* ============ INIT ============ */
+document.getElementById("ano").textContent = new Date().getFullYear();
+render();
+observarReveals();
+</script>
+</body>
+</html>
