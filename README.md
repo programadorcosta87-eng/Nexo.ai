@@ -18,3 +18,7 @@ Hub que reúne diversas ferramentas de Inteligência Artificial em um só lugar,
 - HTML, CSS e JavaScript
 - Netlify
 - Progressive Web App (PWA)
+
+---
+
+Desenvolvido por [Adilson Costa](https://github.com/programadorcosta87-eng)
