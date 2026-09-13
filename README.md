@@ -15,7 +15,7 @@ Hub que reúne diversas ferramentas de Inteligência Artificial em um só lugar,
 
 ## Tecnologias
 
-- HTML, CSS e JavaScript
+- HTML
 - Netlify
 - Progressive Web App (PWA)
 
