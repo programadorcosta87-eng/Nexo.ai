@@ -1,0 +1,21 @@
+{
+  "name": "Nexo — Hub de IAs",
+  "short_name": "Nexo",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "description": "Todas as IAs do mundo em um só lugar.",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b100f",
+  "theme_color": "#0b100f",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

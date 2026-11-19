@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Nexo — o hub que reúne mais de 100 inteligências artificiais do mundo em um só lugar. Grátis e pagas, organizadas por categoria. Instale o app no Android, iOS, Windows, macOS e Linux.">
-<meta name="theme-color" content="#05070e">
+<meta name="theme-color" content="#0b100f">
+<link rel="manifest" href="/manifest.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Nexo">
 <title>Nexo — Todas as IAs do mundo em um só lugar</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2305070e'/><text x='50' y='72' font-size='62' text-anchor='middle' font-family='Arial' font-weight='bold' fill='%2338bdf8'>N</text></svg>">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="apple-touch-icon" href="/icon.svg">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/space-grotesk@latest/latin-500-normal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/space-grotesk@latest/latin-700-normal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.css">
@@ -334,6 +336,10 @@ body::before{background-image:linear-gradient(rgba(190,207,191,.025) 1px,transpa
 .toast{background:#1b2721;border-color:var(--borda);color:var(--branco)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+
+/* ===== AJUSTES DE ROBUSTEZ ===== */
+@media(max-width:960px){.nav-links,.nav-links.aberto{z-index:100!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -539,7 +545,7 @@ body::before{background-image:linear-gradient(rgba(190,207,191,.025) 1px,transpa
       <h2>Fique por dentro das <span class="grad">novas IAs</span></h2>
       <p>Receba toda sexta-feira um resumo com as inteligências artificiais mais quentes da semana, direto no seu e-mail. Opcional e gratuito.</p>
       <form id="formNews" novalidate>
-        <input id="emailNews" type="email" placeholder="seu@email.com" aria-label="Seu e-mail">
+        <input id="emailNews" type="email" autocomplete="email" inputmode="email" placeholder="seu@email.com" aria-label="Seu e-mail">
         <button class="btn btn-prim" type="submit">Receber novidades</button>
       </form>
     </div>
@@ -750,48 +756,12 @@ function iniciais(nome){
   return s.toUpperCase();
 }
 
-/* ============ PWA: MANIFESTO + ÍCONE (instalação de verdade) ============ */
+/* ============ PWA: MANIFESTO ESTÁTICO + SERVICE WORKER ============ */
 (function pwaSetup(){
-  const svgIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#05070e"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset=".5" stop-color="#22c55e"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><text x="50" y="74" font-size="64" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" fill="url(#g)">N</text></svg>';
-  const icone = "data:image/svg+xml," + encodeURIComponent(svgIcon);
-  const manifesto = {
-    name:"Nexo — Hub de IAs",
-    short_name:"Nexo",
-    description:"Todas as IAs do mundo em um só lugar.",
-    id:"nexo-hub-ias",
-    start_url: location.href.split("#")[0],
-    scope: location.href.split("#")[0].replace(/[^/]*$/, ""),
-    display:"standalone",
-    orientation:"portrait",
-    background_color:"#05070e",
-    theme_color:"#05070e",
-    lang:"pt-BR",
-    icons:[
-      {src:icone, sizes:"any", type:"image/svg+xml", purpose:"any"},
-      {src:icone, sizes:"192x192 512x512", type:"image/svg+xml", purpose:"any maskable"}
-    ]
-  };
-  const link = document.createElement("link");
-  link.rel = "manifest";
-  link.href = "data:application/manifest+json," + encodeURIComponent(JSON.stringify(manifesto));
-  document.head.appendChild(link);
-
-  /* ícone PNG real para iOS (gerado em canvas) */
-  try{
-    const c = document.createElement("canvas");
-    c.width = 180; c.height = 180;
-    const x = c.getContext("2d");
-    x.fillStyle = "#05070e"; x.fillRect(0,0,180,180);
-    const g = x.createLinearGradient(0,0,180,180);
-    g.addColorStop(0,"#3b82f6"); g.addColorStop(.5,"#22c55e"); g.addColorStop(1,"#8b5cf6");
-    x.fillStyle = g; x.font = "bold 110px Arial, sans-serif";
-    x.textAlign = "center"; x.textBaseline = "middle";
-    x.fillText("N", 90, 98);
-    const l = document.createElement("link");
-    l.rel = "apple-touch-icon";
-    l.href = c.toDataURL("image/png");
-    document.head.appendChild(l);
-  }catch(e){}
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    navigator.serviceWorker.register("/sw.js", {scope:"/"})
+      .catch(function(){ /* O site continua funcionando mesmo sem cache offline. */ });
+  }
 })();
 
 /* captura do prompt nativo de instalação (Android/Windows/macOS/Linux) */
@@ -1102,14 +1072,14 @@ document.getElementById("formNews").addEventListener("submit", function(e){
   }
   try{ localStorage.setItem("nexo_newsletter", valor); }catch(err){}
   campo.value = "";
-  toast("Inscrição confirmada! Bem-vindo(a) ao Nexo.", "🚀");
+  toast("E-mail salvo neste navegador. O envio de novidades ainda não está conectado.", "ℹ️");
 });
 
 /* ============ REDES SOCIAIS / DOCUMENTOS ============ */
 document.querySelectorAll(".social-link").forEach(function(link){
   link.addEventListener("click", function(e){
     e.preventDefault();
-    toast("Siga o Nexo no "+link.dataset.rede+" — em breve!", "🔗");
+    toast("O perfil oficial do Nexo no "+link.dataset.rede+" ainda não foi configurado.", "ℹ️");
   });
 });
 document.querySelectorAll("[data-doc]").forEach(function(btn){
