@@ -2,3 +2,9 @@
 
 [build]
   publish = "."
+
+[[redirects]]
+  from = "/Nexo.ai.html"
+  to = "/index.html"
+  status = 200
+  force = true
