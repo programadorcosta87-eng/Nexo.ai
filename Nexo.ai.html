@@ -267,6 +267,73 @@ footer{border-top:1px solid var(--borda);background:#04060b;padding:70px 0 30px;
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ===== NEXO VISUAL REFRESH — identidade grafite + sálvia ===== */
+:root{
+ --bg:#0b100f;--bg2:#101715;--panel:#151e1a;--panel2:#1b2721;
+ --branco:#f0f2ec;--cinza:#aab5ad;
+ --azul:#91a995;--azul2:#c1cfbd;--verde:#9bad91;--verde2:#c1cfbd;
+ --roxo:#7e9184;--roxo2:#c4cec4;--borda:rgba(190,207,191,.14);--raio:18px;
+}
+body{background:var(--bg);color:var(--branco)}
+body::before{background-image:linear-gradient(rgba(190,207,191,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(190,207,191,.025) 1px,transparent 1px);background-size:64px 64px}
+::selection{background:#718875;color:#fff}
+::-webkit-scrollbar-track{background:#0b100f}
+::-webkit-scrollbar-thumb{background:#718875}
+.grad{background:linear-gradient(90deg,#e1e7dc,#a9bba8);-webkit-background-clip:text;background-clip:text;color:transparent}
+#nav.rolou{background:rgba(11,16,15,.9);border-bottom-color:var(--borda)}
+.logo-mark{background:linear-gradient(145deg,#b6c5b1,#657b69);box-shadow:0 8px 24px rgba(111,137,115,.2)}
+.logo-txt small{color:#b6c5b1}
+.nav-links>li>a:hover{color:#c1cfbd}
+.btn-prim,.seg button.ativo{background:linear-gradient(135deg,#829982,#637a68);color:#fff;box-shadow:0 8px 24px rgba(95,121,99,.22)}
+.btn-prim:hover,.abrir:hover{filter:brightness(1.1)}
+.btn-sec:hover{border-color:#9bad91;color:#c1cfbd}
+.orbe.o1{background:#536b59;opacity:.25}.orbe.o2{background:#75816c;opacity:.2}.orbe.o3{background:#52665b;opacity:.2}
+.hero-badge{background:rgba(21,30,26,.78);border-color:var(--borda)}
+.hero-badge i{background:#a8bd9f;box-shadow:0 0 12px rgba(168,189,159,.55)}
+.stat{background:rgba(21,30,26,.72);border-color:var(--borda)}
+.stat:hover{border-color:#91a995}
+.mq-item b{color:#b6c5b1}
+.sec-tag{color:#c1cfbd;border-color:rgba(177,197,174,.25);background:rgba(145,169,149,.08)}
+#busca:focus{border-color:#91a995;box-shadow:0 0 0 4px rgba(145,169,149,.12)}
+.chip:hover{border-color:#91a995}.chip.ativo{border-color:#91a995;color:#e4e9e0;background:rgba(145,169,149,.13);box-shadow:0 0 0 1px rgba(145,169,149,.2)}
+#contador b{color:#c1cfbd}
+.ai-card{background:linear-gradient(160deg,#17211c,#111815);border-color:rgba(190,207,191,.12);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.ai-card::after{background:radial-gradient(circle,rgba(145,169,149,.16),transparent 70%)}
+.ai-card:hover{border-color:rgba(177,197,174,.42);box-shadow:0 18px 44px rgba(0,0,0,.28)}
+.g1,.g2,.g3,.g4,.g5,.g6{background:linear-gradient(145deg,#758b78,#3e5145)}
+.hot{color:#18231b;background:#c1cfbd}
+.pb-verde{color:#c1cfbd;border-color:rgba(177,197,174,.3);background:rgba(145,169,149,.1)}
+.pb-azul{color:#c5d0c8;border-color:rgba(177,197,174,.24);background:rgba(145,169,149,.08)}
+.pb-roxo{color:#c9cec5;border-color:rgba(177,197,174,.22);background:rgba(145,169,149,.07)}
+.abrir{background:linear-gradient(135deg,#829982,#637a68);box-shadow:0 6px 18px rgba(95,121,99,.16)}
+.passo,.faq-item,.plat-btn{background:#151e1a;border-color:var(--borda)}
+.passo:hover{border-color:#91a995}
+.passo:nth-child(1) .passo-ico,.passo:nth-child(2) .passo-ico,.passo:nth-child(3) .passo-ico{background:linear-gradient(145deg,#829982,#536b59)}
+.passo-num{color:rgba(190,207,191,.08)}
+.app-visual::before{background:radial-gradient(circle,rgba(145,169,149,.2),transparent 70%)}
+.app-img{box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 45px rgba(145,169,149,.1)}
+.app-versao{background:linear-gradient(135deg,#829982,#637a68);box-shadow:0 8px 24px rgba(95,121,99,.2)}
+.plat-btn:hover{border-color:#91a995;background:#1b2721}
+.plat-btn svg{color:#b6c5b1}.plat-btn .pb-dl{color:#c1cfbd}
+.faq-item.aberto{border-color:#91a995}.faq-q svg{color:#b6c5b1}.faq-item.aberto .faq-q svg{color:#c1cfbd}
+.news-box{background:linear-gradient(135deg,rgba(111,137,115,.18),rgba(24,37,29,.5));border-color:var(--borda)}
+.news-box::before{background:linear-gradient(100deg,transparent,rgba(220,231,216,.045),transparent)}
+#emailNews:focus{border-color:#91a995}
+.modal{background:linear-gradient(160deg,#18221d,#101714);border-color:var(--borda)}
+.modal::before{background:linear-gradient(90deg,#758b78,#c1cfbd)}
+.modal-x:hover{border-color:#91a995;color:#c1cfbd}
+.guia-passos li{background:#151e1a;border-color:var(--borda)}
+.guia-passos li::before{background:linear-gradient(145deg,#829982,#536b59)}
+#hamb{border-color:var(--borda)}
+#hamb span,#hamb span::before,#hamb span::after{background:#e5ebe3}
+#hamb.aberto span{background:transparent}
+#menu{background:rgba(15,22,18,.98)}
+#menu a:hover{color:#c1cfbd}
+#btnTopo{background:linear-gradient(145deg,#829982,#637a68)}
+.toast{background:#1b2721;border-color:var(--borda);color:var(--branco)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
